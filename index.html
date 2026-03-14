@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>测测你的"人生作弊码"是什么🎮</title>
+  <title>测测你的"人生作弊码" - 完整版</title>
   <style>
     * {
       margin: 0;
@@ -19,7 +19,7 @@
     }
     
     .container {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       background: white;
       border-radius: 20px;
@@ -36,13 +36,13 @@
     
     .header h1 {
       color: #667eea;
-      font-size: 28px;
+      font-size: 26px;
       margin-bottom: 10px;
     }
     
     .header p {
       color: #666;
-      font-size: 16px;
+      font-size: 15px;
     }
     
     .tag {
@@ -51,12 +51,70 @@
       color: white;
       padding: 5px 15px;
       border-radius: 20px;
-      font-size: 14px;
+      font-size: 13px;
       margin-top: 10px;
     }
     
-    .question {
+    .mode-select {
+      display: flex;
+      gap: 15px;
       margin-bottom: 30px;
+    }
+    
+    .mode-btn {
+      flex: 1;
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+    
+    .mode-btn:hover {
+      border-color: #667eea;
+    }
+    
+    .mode-btn.active {
+      border-color: #667eea;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .mode-btn h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    
+    .mode-btn p {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+    
+    .progress {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      transition: width 0.3s;
+    }
+    
+    .question {
+      margin-bottom: 25px;
       padding: 20px;
       background: #f8f9fa;
       border-radius: 15px;
@@ -66,7 +124,8 @@
     .question h3 {
       color: #333;
       margin-bottom: 15px;
-      font-size: 18px;
+      font-size: 17px;
+      line-height: 1.5;
     }
     
     .options {
@@ -76,7 +135,7 @@
     }
     
     .option {
-      padding: 15px 20px;
+      padding: 14px 18px;
       background: white;
       border: 2px solid #e0e0e0;
       border-radius: 10px;
@@ -100,20 +159,37 @@
       display: none;
     }
     
-    .result-btn {
-      width: 100%;
-      padding: 18px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      border-radius: 15px;
-      font-size: 18px;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: transform 0.3s;
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
     }
     
-    .result-btn:hover {
+    .nav-btn {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .prev-btn {
+      background: #e0e0e0;
+      color: #666;
+    }
+    
+    .prev-btn:hover {
+      background: #d0d0d0;
+    }
+    
+    .next-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .next-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
     }
@@ -121,7 +197,7 @@
     .result {
       display: none;
       margin-top: 30px;
-      padding: 25px;
+      padding: 30px;
       background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
       color: white;
       border-radius: 15px;
@@ -140,22 +216,22 @@
     }
     
     .result h2 {
-      font-size: 24px;
-      margin-bottom: 15px;
+      font-size: 26px;
+      margin-bottom: 20px;
       text-align: center;
     }
     
     .result p {
       font-size: 16px;
       line-height: 1.8;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     
     .result .warning {
       background: rgba(255,255,255,0.2);
-      padding: 10px 15px;
+      padding: 12px 18px;
       border-radius: 8px;
-      margin-top: 15px;
+      margin-top: 18px;
       font-size: 14px;
     }
     
@@ -184,210 +260,62 @@
     .share-btn:hover {
       background: #128C7E;
     }
+    
+    .question-number {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-right: 8px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
       <h1>🎮 测测你的"人生作弊码"</h1>
-      <p>是什么让你与众不同</p>
+      <p>30 道题目，发现你的隐藏人生外挂</p>
       <span class="tag">不准你打我（超准版）</span>
     </div>
     
-    <form id="quizForm">
-      <!-- Question 1 -->
-      <div class="question">
-        <h3>Q1. 深夜 2 点，你突然醒了，第一反应是？</h3>
-        <div class="options">
-          <label class="option">
-            <input type="radio" name="q1" value="a">
-            A. 刷手机，时间不知不觉就没了
-          </label>
-          <label class="option">
-            <input type="radio" name="q1" value="b">
-            B. 思考人生，越想越清醒
-          </label>
-          <label class="option">
-            <input type="radio" name="q1" value="c">
-            C. 庆幸还能睡 4 小时，秒睡
-          </label>
-          <label class="option">
-            <input type="radio" name="q1" value="d">
-            D. 起来吃点东西，胃醒了人也醒了
-          </label>
+    <div class="mode-select">
+      <div class="mode-btn active" onclick="selectMode('standard')">
+        <h3>📝 标准版</h3>
+        <p>30 题 · 快速测试</p>
+      </div>
+      <div class="mode-btn" onclick="selectMode('story')">
+        <h3>📖 故事版</h3>
+        <p>30 题 · 沉浸式体验</p>
+      </div>
+    </div>
+    
+    <div id="quizContainer">
+      <div class="progress">
+        <div style="display:flex;justify-content:space-between;">
+          <span>进度：<span id="progressText">1/30</span></span>
+          <span id="progressPercent">3%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width: 3%"></div>
         </div>
       </div>
       
-      <!-- Question 2 -->
-      <div class="question">
-        <h3>Q2. 朋友说"我有个秘密告诉你"，你内心 OS 是？</h3>
-        <div class="options">
-          <label class="option">
-            <input type="radio" name="q2" value="a">
-            A. 又来，上次说的秘密已经忘了
-          </label>
-          <label class="option">
-            <input type="radio" name="q2" value="b">
-            B. 什么秘密？我准备好了
-          </label>
-          <label class="option">
-            <input type="radio" name="q2" value="c">
-            C. 希望不是借钱/分手/要孩子
-          </label>
-          <label class="option">
-            <input type="radio" name="q2" value="d">
-            D. 先判断值不值得听
-          </label>
-        </div>
-      </div>
+      <div id="questionContainer"></div>
       
-      <!-- Question 3 -->
-      <div class="question">
-        <h3>Q3. 看到"限时 5 分钟"的促销，你会？</h3>
-        <div class="options">
-          <label class="option">
-            <input type="radio" name="q3" value="a">
-            A. 直接关掉，我不被套路
-          </label>
-          <label class="option">
-            <input type="radio" name="q3" value="b">
-            B. 打开看看，不买但了解一下
-          </label>
-          <label class="option">
-            <input type="radio" name="q3" value="c">
-            C. 如果真需要就买，不纠结
-          </label>
-          <label class="option">
-            <input type="radio" name="q3" value="d">
-            D. 已经下单了，手比脑子快
-          </label>
-        </div>
+      <div class="nav-buttons">
+        <button class="nav-btn prev-btn" id="prevBtn" onclick="prevQuestion()" style="display:none">← 上一题</button>
+        <button class="nav-btn next-btn" id="nextBtn" onclick="nextQuestion()">下一题 →</button>
       </div>
-      
-      <!-- Question 4 -->
-      <div class="question">
-        <h3>Q4. 如果明天能拥有一种超能力，选？</h3>
-        <div class="options">
-          <label class="option">
-            <input type="radio" name="q4" value="a">
-            A. 读心术（知道别人怎么想你）
-          </label>
-          <label class="option">
-            <input type="radio" name="q4" value="b">
-            B. 时间暂停（想多睡就多睡）
-          </label>
-          <label class="option">
-            <input type="radio" name="q4" value="c">
-            C. 隐身术（想消失就消失）
-          </label>
-          <label class="option">
-            <input type="radio" name="q4" value="d">
-            D. 预知未来（至少知道彩票号码）
-          </label>
-        </div>
-      </div>
-      
-      <!-- Question 5 -->
-      <div class="question">
-        <h3>Q5. 周末突然多出半天假期，你会？</h3>
-        <div class="options">
-          <label class="option">
-            <input type="radio" name="q5" value="a">
-            A. 补觉，睡到自然醒
-          </label>
-          <label class="option">
-            <input type="radio" name="q5" value="b">
-            B. 学点新东西，看纪录片/书
-          </label>
-          <label class="option">
-            <input type="radio" name="q5" value="c">
-            C. 约朋友出去玩，不宅着
-          </label>
-          <label class="option">
-            <input type="radio" name="q5" value="d">
-            D. 把平时没空做的事搞定
-          </label>
-        </div>
-      </div>
-      
-      <!-- Question 6 -->
-      <div class="question">
-        <h3>Q6. 被人误解了，你的反应是？</h3>
-        <div class="options">
-          <label class="option">
-            <input type="radio" name="q6" value="a">
-            A. 算了，解释太累，随他们想
-          </label>
-          <label class="option">
-            <input type="radio" name="q6" value="b">
-            B. 找机会慢慢解释清楚
-          </label>
-          <label class="option">
-            <input type="radio" name="q6" value="c">
-            C. 当场怼回去，不爽就说
-          </label>
-          <label class="option">
-            <input type="radio" name="q6" value="d">
-            D. 用行动证明，不废话
-          </label>
-        </div>
-      </div>
-      
-      <!-- Question 7 -->
-      <div class="question">
-        <h3>Q7. 手机只剩 10% 电量，你会？</h3>
-        <div class="options">
-          <label class="option">
-            <input type="radio" name="q7" value="a">
-            A. 继续用，反正还能撑一会儿
-          </label>
-          <label class="option">
-            <input type="radio" name="q7" value="b">
-            B. 赶紧查哪里有充电宝
-          </label>
-          <label class="option">
-            <input type="radio" name="q7" value="c">
-            C. 直接关机，省电模式
-          </label>
-          <label class="option">
-            <input type="radio" name="q7" value="d">
-            D. 已经找到充电器了
-          </label>
-        </div>
-      </div>
-      
-      <!-- Question 8 -->
-      <div class="question">
-        <h3>Q8. 如果人生可以重来一次，你会？</h3>
-        <div class="options">
-          <label class="option">
-            <input type="radio" name="q8" value="a">
-            A. 差不多就这样吧，也挺好
-          </label>
-          <label class="option">
-            <input type="radio" name="q8" value="b">
-            B. 想试试完全不同的活法
-          </label>
-          <label class="option">
-            <input type="radio" name="q8" value="c">
-            C. 还是会做类似的选择
-          </label>
-          <label class="option">
-            <input type="radio" name="q8" value="d">
-            D. 更早开始做想做的事
-          </label>
-        </div>
-      </div>
-      
-      <button type="button" class="result-btn" onclick="showResult()">🎮 查看我的作弊码</button>
-    </form>
+    </div>
     
     <div id="result" class="result">
       <h2 id="resultTitle"></h2>
       <p id="resultDesc"></p>
       <p id="resultMotto"></p>
       <div class="warning" id="resultWarning"></div>
-      <button class="share-btn" onclick="shareResult()">📱 分享到朋友圈</button>
+      <button class="share-btn" onclick="shareResult()">📱 分享结果</button>
     </div>
     
     <div class="footer">
@@ -397,94 +325,399 @@
   </div>
   
   <script>
-    // Option selection styling
-    document.querySelectorAll('.option').forEach(option => {
-      option.addEventListener('click', function() {
-        // Remove selected class from siblings
-        this.parentElement.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
-        // Add selected class to clicked option
-        this.classList.add('selected');
-      });
-    });
-    
-    function showResult() {
-      const form = document.getElementById('quizForm');
-      const formData = new FormData(form);
-      
-      let answers = { a: 0, b: 0, c: 0, d: 0 };
-      let answered = 0;
-      
-      for (let [key, value] of formData.entries()) {
-        answers[value]++;
-        answered++;
+    // 标准版题目 - 选项模糊化，不直接暴露答案类型
+    const standardQuestions = [
+      {
+        q: "早上醒来，闹钟还没响，你会？",
+        options: ["再眯 5 分钟，反正时间还早", "想想今天有什么要做的", "直接起床，不给自己赖床机会", "摸手机看看有没有消息"]
+      },
+      {
+        q: "朋友约你周末聚会，但你说不出具体时间，你会？",
+        options: ["先答应，到时候再说", "问清楚再决定", "直接说去不了", "说看情况，留点余地"]
+      },
+      {
+        q: "看到一条很有意思的长文章，你会？",
+        options: ["先收藏，以后有空再看", "现在就认真看完", "扫一眼标题和摘要", "转发给朋友一起看"]
+      },
+      {
+        q: "买东西时，销售人员说'只剩最后一件了'，你会？",
+        options: ["刚好需要就买，不需要就不买", "问问还有没有其他款式", "觉得是套路，直接走", "赶紧买下，怕没了"]
+      },
+      {
+        q: "工作中遇到一个完全陌生的任务，你的第一反应是？",
+        options: ["先问问别人怎么做", "自己摸索一下", "找教程或文档", "直接开始试"]
+      },
+      {
+        q: "吃饭时遇到一个不认识的人拼桌，你会？",
+        options: ["礼貌点头，各吃各的", "找机会聊几句", "看对方是否主动", "专心吃饭，不想被打扰"]
+      },
+      {
+        q: "手机 App 弹窗'限时优惠'，你会？",
+        options: ["关掉，不感兴趣", "看看是什么优惠", "如果真需要就买", "已经习惯了，直接划走"]
+      },
+      {
+        q: "看到一个有意思的短视频，你会？",
+        options: ["看完再决定是否点赞", "直接划走下一个", "转发到朋友圈", "评论几句"]
+      },
+      {
+        q: "朋友说'我最近有点烦'，你会？",
+        options: ["问具体发生了什么", "说'我懂你'", "转移话题聊点开心的", "安静听着"]
+      },
+      {
+        q: "周末在家，突然下雨了，你会？",
+        options: ["正好可以睡个懒觉", "看看有什么电影可以追", "把家里收拾一下", "趁机学点东西"]
+      },
+      {
+        q: "排队时队伍前进很慢，你会？",
+        options: ["拿出手机刷一会儿", "观察周围的人", "有点烦躁，不停看时间", "想想等会儿要做什么"]
+      },
+      {
+        q: "看到一个陌生的展览/活动，你会？",
+        options: ["感兴趣就去看看", "先查查评价", "等朋友一起", "路过就看看海报"]
+      },
+      {
+        q: "收到一封标题是'重要通知'的邮件，你会？",
+        options: ["马上打开看", "等有空再处理", "先看看发件人是谁", "可能是垃圾邮件，先不管"]
+      },
+      {
+        q: "朋友推荐了一本书，你会？",
+        options: ["马上借来看", "先看看简介", "等想起来再看", "问问其他人觉得怎么样"]
+      },
+      {
+        q: "走路时看到一只很可爱的猫，你会？",
+        options: ["停下来摸一摸", "拍张照片", "继续走，但会多看几眼", "叫朋友一起来看"]
+      },
+      {
+        q: "点外卖时，你会？",
+        options: ["随便选一家，差不多就行", "对比几家评分和评价", "点平时常吃的", "看哪个有优惠"]
+      },
+      {
+        q: "看到一个有意思的社交媒体话题，你会？",
+        options: ["发表自己的看法", "看看别人怎么说", "点赞但不评论", "直接划走"]
+      },
+      {
+        q: "晚上 10 点，突然想起一件事没做，你会？",
+        options: ["现在就把他搞定", "明天再做吧", "先记下来，别忘记了", "看心情决定"]
+      },
+      {
+        q: "朋友问你'最近怎么样'，你会？",
+        options: ["说挺好的，还行", "详细说说最近的事", "反问对方怎么样", "简单带过，不想多说"]
+      },
+      {
+        q: "看到一个'测测你是什么性格'的链接，你会？",
+        options: ["马上点开测一下", "看看是什么测试", "觉得不准，不点", "转发给朋友"]
+      },
+      {
+        q: "早上出门前，发现天气不好，你会？",
+        options: ["带上伞，以防万一", "看看天气预报再决定", "直接出门，赌一把", "改期，等天气好点"]
+      },
+      {
+        q: "看到一个陌生人的求助帖子，你会？",
+        options: ["力所能及帮一下", "先看看其他人怎么说", "转发让更多人看到", "觉得可能是假的，不看"]
+      },
+      {
+        q: "吃饭时菜上齐了，你会？",
+        options: ["先拍张照片", "直接开始吃", "等所有人都到齐", "先尝尝哪个最好吃"]
+      },
+      {
+        q: "看到一个'限时免费'的活动，你会？",
+        options: ["先看看是什么", "如果是需要的就参加", "觉得有陷阱，不参加", "已经报名了"]
+      },
+      {
+        q: "朋友说'我们好久没见了'，你会？",
+        options: ["是啊，找个时间聚聚", "具体约个时间", "最近有点忙，改天吧", "主动约对方"]
+      },
+      {
+        q: "看到一个有意思的播客/视频系列，你会？",
+        options: ["一期一期追", "先收藏，有空再看", "倍速看完", "看几期觉得无聊就放弃"]
+      },
+      {
+        q: "晚上睡不着，你会？",
+        options: ["起来做点别的事", "继续躺着想事情", "看会儿手机", "数羊，强迫自己睡"]
+      },
+      {
+        q: "看到一个'人生建议'类的文章，你会？",
+        options: ["认真看完，想想有道理", "扫一眼标题", "觉得都是鸡汤，不看", "收藏以后看"]
+      },
+      {
+        q: "朋友问你借钱，你会？",
+        options: ["看情况，能借就借", "直接说没有", "问问借多少，用途是什么", "转移话题"]
+      },
+      {
+        q: "看到一个'改变人生的 10 个习惯'的标题，你会？",
+        options: ["点开看看是什么", "觉得是标题党，不点", "收藏以后看", "转发给需要的人"]
       }
+    ];
+    
+    // 故事版题目 - 奇幻冒险故事线
+    const storyQuestions = [
+      {
+        q: "【第一章：迷雾森林】你醒来时发现自己身处一片陌生的森林，四周弥漫着薄雾。你会？",
+        options: ["先观察周围环境，寻找线索", "大声呼救，看看有没有人", "沿着一条小路往前走", "找个安全的地方休息一会儿"]
+      },
+      {
+        q: "你遇到一只会说话的狐狸，它说知道出路，但需要你帮它找东西。你会？",
+        options: ["问清楚是什么东西再说", "直接答应，先离开这里要紧", "怀疑它在骗你，继续自己找路", "跟狐狸聊聊，看看它还能提供什么信息"]
+      },
+      {
+        q: "狐狸说它丢失的是一颗'星星碎片'，在森林深处的洞穴里。路上你发现了一条分叉路，你会？",
+        options: ["选左边那条，看起来更安全", "选右边那条，感觉更近", "两条都看看，再决定", "问问狐狸的意见"]
+      },
+      {
+        q: "路上遇到一条湍急的河流，只有一座摇晃的独木桥。你会？",
+        options: ["小心地走过去", "找其他地方过河", "试试能不能游过去", "先观察一下有没有其他过河的方法"]
+      },
+      {
+        q: "过河后，你发现一个废弃的小屋，门口挂着一个风铃。你会？",
+        options: ["推门进去看看", "站在门口听风铃的声音", "绕开小屋，继续前进", "敲敲门，看看有没有人"]
+      },
+      {
+        q: "小屋里有一本古老的日记，记录着这片森林的秘密。你会？",
+        options: ["认真读完每一页", "快速翻找有用的信息", "带走日记，以后慢慢看", "留在原地，继续前进"]
+      },
+      {
+        q: "日记里提到洞穴入口被一道魔法门挡住了，需要'真心话'才能打开。你会？",
+        options: ["想想自己最想说的真心话", "随便说点什么试试", "找其他方法进入", "问日记有没有提示"]
+      },
+      {
+        q: "魔法门打开了，洞穴里漆黑一片。你会？",
+        options: ["找找有没有火把或光源", "小心地摸索前进", "先听听洞里有什么声音", "有点害怕，想退出去"]
+      },
+      {
+        q: "洞穴深处，你看到了三个发光的箱子，狐狸说星星碎片就在其中一个里。你会？",
+        options: ["打开第一个箱子", "仔细观察三个箱子的区别", "问问狐狸有没有提示", "三个都打开看看"]
+      },
+      {
+        q: "你打开了中间的箱子，里面是一面镜子，镜子里的你似乎在微笑。你会？",
+        options: ["盯着镜子里的自己看", "觉得奇怪，关上箱子", "跟镜子里的自己说话", "继续找其他箱子"]
+      },
+      {
+        q: "镜子里传来声音：'真正的星星碎片不在箱子里。'你会？",
+        options: ["问镜子那在哪里", "觉得被耍了，很生气", "想想之前遇到的线索", "放弃，先离开这里"]
+      },
+      {
+        q: "镜子说：'看看你的影子。'你低头发现影子里有一颗发光的碎片。你会？",
+        options: ["伸手去拿", "问镜子怎么拿", "觉得不可思议，愣在原地", "拍照留念"]
+      },
+      {
+        q: "你拿到了星星碎片，狐狸出现了，说这是考验。现在它要送你一份礼物。你会？",
+        options: ["问有什么礼物可选", "让狐狸自己决定", "说不用了，我要离开这里", "感谢狐狸，收下礼物"]
+      },
+      {
+        q: "狐狸给了你三张卡片：一张能预知未来，一张能回到过去，一张能改变现在。你会？",
+        options: ["选预知未来的卡片", "选回到过去的卡片", "选改变现在的卡片", "问狐狸你的选择意味着什么"]
+      },
+      {
+        q: "你做出了选择，狐狸说：'这就是你的答案。'突然，你回到了现实世界。你会？",
+        options: ["觉得是一场梦，但卡片还在手里", "怀疑自己是不是疯了", "把经历写下来", "当作秘密，不告诉任何人"]
+      },
+      {
+        q: "第二天，你发现卡片上的文字在变化。你会？",
+        options: ["每天观察卡片的变化", "把卡片收起来，不看它", "研究卡片的使用方法", "把卡片送给别人"]
+      },
+      {
+        q: "一周后，卡片上出现了一行字：'真正的冒险才刚刚开始。'你会？",
+        options: ["期待接下来会发生什么", "觉得压力很大", "把卡片藏起来，不想再看到", "找找有没有其他人也有这样的卡片"]
+      },
+      {
+        q: "你开始在现实生活中发现一些'异常'——比如总能恰好赶上公交车。你会？",
+        options: ["觉得是巧合，不在意", "开始注意这些细节", "怀疑卡片在影响你的生活", "试图测试是不是真的"]
+      },
+      {
+        q: "朋友问你最近是不是运气变好了，你会？",
+        options: ["说是啊，最近挺顺的", "不说卡片的事，含糊带过", "开玩笑说是中了彩票", "认真想想是不是真的"]
+      },
+      {
+        q: "某天，卡片突然变热，上面出现了新的文字：'选择的时候到了。'你会？",
+        options: ["马上看看是什么选择", "等冷静一下再看", "把卡片放在一边，不想面对", "找个人商量一下"]
+      },
+      {
+        q: "卡片上说：'你可以保留这份力量，或者把它归还。'你会？",
+        options: ["保留，这太珍贵了", "归还，这不是我该拥有的", "再想想，不急着决定", "问问狐狸的意见"]
+      },
+      {
+        q: "如果你选择保留，卡片说：'力量会改变你。'你会？",
+        options: ["接受改变，看看会变成什么样", "有点害怕，但还是保留", "问会怎么改变", "改变主意，选择归还"]
+      },
+      {
+        q: "如果你选择归还，卡片说：'但记忆会留下。'你会？",
+        options: ["接受，经历本身就是财富", "后悔了，想收回决定", "想想这段经历教会了你什么", "把故事写下来"]
+      },
+      {
+        q: "最终，你做出了选择。狐狸的声音再次响起：'你找到了属于自己的路。'你会？",
+        options: ["感谢这段经历", "想想接下来要做什么", "觉得松了一口气", "期待下一次冒险"]
+      },
+      {
+        q: "回到现实后，你发现自己的一些习惯改变了。你会？",
+        options: ["接受这些改变，顺其自然", "试图恢复到以前的状态", "观察这些改变带来的影响", "告诉信任的朋友"]
+      },
+      {
+        q: "某天，你在街上看到一个熟悉的狐狸图案。你会？",
+        options: ["追过去看看", "觉得是幻觉，继续走", "拍照留念", "想想是不是又要有冒险了"]
+      },
+      {
+        q: "你开始记录生活中的'小奇迹'——恰好遇到的好事。你会？",
+        options: ["认真记录每一件", "觉得是心理作用", "只记录特别的事", "分享给朋友"]
+      },
+      {
+        q: "朋友说'你最近好像不一样了'，你会？",
+        options: ["笑着说可能是吧", "认真想想自己哪里变了", "说没什么变化", "问问朋友觉得哪里不一样"]
+      },
+      {
+        q: "某天晚上，你梦到了那片森林。醒来后，你会？",
+        options: ["想想梦里的细节", "觉得是日有所思夜有所梦", "记录下来，看看有没有意义", "不想太多，继续生活"]
+      },
+      {
+        q: "【终章】故事的最后，你明白了什么？",
+        options: ["冒险不在远方，在日常的每个选择里", "力量不是拥有，而是如何使用", "改变不是目的，成长才是", "所有的相遇都是命中注定"]
+      }
+    ];
+    
+    let currentMode = 'standard';
+    let currentQuestion = 0;
+    let answers = {};
+    let questionData = [];
+    
+    function selectMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.closest('.mode-btn').classList.add('active');
       
-      if (answered < 8) {
-        alert('请先回答所有问题哦～');
+      questionData = mode === 'standard' ? standardQuestions : storyQuestions;
+      currentQuestion = 0;
+      answers = {};
+      
+      document.getElementById('quizContainer').style.display = 'block';
+      document.getElementById('result').style.display = 'none';
+      
+      showQuestion();
+    }
+    
+    function showQuestion() {
+      const question = questionData[currentQuestion];
+      const container = document.getElementById('questionContainer');
+      
+      container.innerHTML = `
+        <div class="question">
+          <h3><span class="question-number">Q${currentQuestion + 1}</span>${question.q}</h3>
+          <div class="options">
+            ${question.options.map((opt, idx) => `
+              <label class="option ${answers[currentQuestion] === idx ? 'selected' : ''}">
+                <input type="radio" name="option" value="${idx}" ${answers[currentQuestion] === idx ? 'checked' : ''} onchange="selectOption(${idx})">
+                ${String.fromCharCode(65 + idx)}. ${opt}
+              </label>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      
+      updateProgress();
+      updateButtons();
+    }
+    
+    function selectOption(optionIdx) {
+      answers[currentQuestion] = optionIdx;
+      showQuestion();
+    }
+    
+    function updateProgress() {
+      const progress = ((currentQuestion + 1) / questionData.length) * 100;
+      document.getElementById('progressText').textContent = `${currentQuestion + 1}/${questionData.length}`;
+      document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
+      document.getElementById('progressFill').style.width = progress + '%';
+    }
+    
+    function updateButtons() {
+      document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'block' : 'none';
+      
+      const nextBtn = document.getElementById('nextBtn');
+      if (currentQuestion === questionData.length - 1) {
+        nextBtn.textContent = '🎮 查看结果';
+      } else {
+        nextBtn.textContent = '下一题 →';
+      }
+    }
+    
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion();
+      }
+    }
+    
+    function nextQuestion() {
+      if (answers[currentQuestion] === undefined) {
+        alert('请先选择一个选项哦～');
         return;
       }
       
-      // Find most selected answer
-      let maxCount = 0;
-      let resultType = '';
-      for (let [key, count] of Object.entries(answers)) {
-        if (count > maxCount) {
-          maxCount = count;
+      if (currentQuestion < questionData.length - 1) {
+        currentQuestion++;
+        showQuestion();
+      } else {
+        calculateResult();
+      }
+    }
+    
+    function calculateResult() {
+      // 复杂的计分算法，不让用户猜出规律
+      let scores = { a: 0, b: 0, c: 0, d: 0 };
+      
+      // 不同题目类型权重不同
+      const weights = [1, 2, 1, 3, 2, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 1, 3, 2, 1, 3, 2, 1, 2, 3, 1, 2, 1, 3, 2];
+      
+      for (let q in answers) {
+        const option = answers[q];
+        const weight = weights[q % weights.length];
+        scores[String.fromCharCode(65 + option)] += weight;
+      }
+      
+      // 找出最高分
+      let maxScore = 0;
+      let resultType = 'a';
+      for (let [key, score] of Object.entries(scores)) {
+        if (score > maxScore) {
+          maxScore = score;
           resultType = key;
         }
       }
       
-      // Check if all answers are evenly distributed (2 each for 8 questions)
-      const values = Object.values(answers);
-      const isEven = values.every(v => v === values[0]);
+      const results = {
+        a: {
+          title: '⏰ 拖延系外挂',
+          desc: '你的作弊码是"最后期限爆发力"。平时看着懒散，一到 deadline 直接开挂，效率吊打别人。人生信条：能拖到明天，绝不做在今天。',
+          motto: '🎯 人生信条：能拖到明天，绝不做在今天',
+          warning: '⚠️ 风险：心脏承受能力越来越强'
+        },
+        b: {
+          title: '🧠 好奇系外挂',
+          desc: '你的作弊码是"信息吸收力"。对什么都感兴趣，学东西快，人脉广，因为你知道的杂学最多。人生信条：知道得越多，活得越明白。',
+          motto: '🎯 人生信条：知道得越多，活得越明白',
+          warning: '⚠️ 风险：容易分心，专注力是短板'
+        },
+        c: {
+          title: '🎯 直觉系外挂',
+          desc: '你的作弊码是"精准判断力"。不纠结、不内耗，直觉准到离谱。别人分析半小时，你 3 秒给答案，还他妈挺准。人生信条：想多了累，做了再说。',
+          motto: '🎯 人生信条：想多了累，做了再说',
+          warning: '⚠️ 风险：偶尔会错过深度思考的机会'
+        },
+        d: {
+          title: '🚀 行动系外挂',
+          desc: '你的作弊码是"执行力碾压"。想到就做，不给自己反悔的机会。别人还在规划，你已经干完了。人生信条：完成比完美重要。',
+          motto: '🎯 人生信条：完成比完美重要',
+          warning: '⚠️ 风险：容易冲动，需要学会慢一点'
+        }
+      };
       
-      let result;
-      
-      if (isEven && answers.a === 2 && answers.b === 2 && answers.c === 2 && answers.d === 2) {
-        result = {
-          title: '🌟 全能系外挂',
-          desc: '你的作弊码是"随机应变"。没有固定模式，但什么都能应付。这种人最可怕，因为你无法被预测。',
-          motto: '✨ 隐藏技能：你是来体验游戏的，不是来通关的',
-          warning: ''
-        };
-      } else {
-        const results = {
-          a: {
-            title: '⏰ 拖延系外挂',
-            desc: '你的作弊码是"最后期限爆发力"。平时看着懒散，一到 deadline 直接开挂，效率吊打别人。人生信条：能拖到明天，绝不做在今天。',
-            motto: '🎯 人生信条：能拖到明天，绝不做在今天',
-            warning: '⚠️ 风险：心脏承受能力越来越强'
-          },
-          b: {
-            title: '🧠 好奇系外挂',
-            desc: '你的作弊码是"信息吸收力"。对什么都感兴趣，学东西快，人脉广，因为你知道的杂学最多。人生信条：知道得越多，活得越明白。',
-            motto: '🎯 人生信条：知道得越多，活得越明白',
-            warning: '⚠️ 风险：容易分心，专注力是短板'
-          },
-          c: {
-            title: '🎯 直觉系外挂',
-            desc: '你的作弊码是"精准判断力"。不纠结、不内耗，直觉准到离谱。别人分析半小时，你 3 秒给答案，还他妈挺准。人生信条：想多了累，做了再说。',
-            motto: '🎯 人生信条：想多了累，做了再说',
-            warning: '⚠️ 风险：偶尔会错过深度思考的机会'
-          },
-          d: {
-            title: '🚀 行动系外挂',
-            desc: '你的作弊码是"执行力碾压"。想到就做，不给自己反悔的机会。别人还在规划，你已经干完了。人生信条：完成比完美重要。',
-            motto: '🎯 人生信条：完成比完美重要',
-            warning: '⚠️ 风险：容易冲动，需要学会慢一点'
-          }
-        };
-        result = results[resultType];
-      }
+      const result = results[resultType];
       
       document.getElementById('resultTitle').textContent = result.title;
       document.getElementById('resultDesc').textContent = result.desc;
       document.getElementById('resultMotto').textContent = result.motto;
       document.getElementById('resultWarning').textContent = result.warning;
       
-      const resultDiv = document.getElementById('result');
-      resultDiv.style.display = 'block';
-      resultDiv.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('quizContainer').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
     }
     
     function shareResult() {
@@ -498,12 +731,14 @@
           url: window.location.href
         });
       } else {
-        // Fallback: copy to clipboard
         navigator.clipboard.writeText(text).then(() => {
           alert('分享链接已复制到剪贴板！');
         });
       }
     }
+    
+    // 初始化
+    selectMode('standard');
   </script>
 </body>
 </html>
