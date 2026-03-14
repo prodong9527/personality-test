@@ -287,6 +287,98 @@
         </div>
       </div>
       
+      <!-- Question 5 -->
+      <div class="question">
+        <h3>Q5. 周末突然多出半天假期，你会？</h3>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q5" value="a">
+            A. 补觉，睡到自然醒
+          </label>
+          <label class="option">
+            <input type="radio" name="q5" value="b">
+            B. 学点新东西，看纪录片/书
+          </label>
+          <label class="option">
+            <input type="radio" name="q5" value="c">
+            C. 约朋友出去玩，不宅着
+          </label>
+          <label class="option">
+            <input type="radio" name="q5" value="d">
+            D. 把平时没空做的事搞定
+          </label>
+        </div>
+      </div>
+      
+      <!-- Question 6 -->
+      <div class="question">
+        <h3>Q6. 被人误解了，你的反应是？</h3>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q6" value="a">
+            A. 算了，解释太累，随他们想
+          </label>
+          <label class="option">
+            <input type="radio" name="q6" value="b">
+            B. 找机会慢慢解释清楚
+          </label>
+          <label class="option">
+            <input type="radio" name="q6" value="c">
+            C. 当场怼回去，不爽就说
+          </label>
+          <label class="option">
+            <input type="radio" name="q6" value="d">
+            D. 用行动证明，不废话
+          </label>
+        </div>
+      </div>
+      
+      <!-- Question 7 -->
+      <div class="question">
+        <h3>Q7. 手机只剩 10% 电量，你会？</h3>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q7" value="a">
+            A. 继续用，反正还能撑一会儿
+          </label>
+          <label class="option">
+            <input type="radio" name="q7" value="b">
+            B. 赶紧查哪里有充电宝
+          </label>
+          <label class="option">
+            <input type="radio" name="q7" value="c">
+            C. 直接关机，省电模式
+          </label>
+          <label class="option">
+            <input type="radio" name="q7" value="d">
+            D. 已经找到充电器了
+          </label>
+        </div>
+      </div>
+      
+      <!-- Question 8 -->
+      <div class="question">
+        <h3>Q8. 如果人生可以重来一次，你会？</h3>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q8" value="a">
+            A. 差不多就这样吧，也挺好
+          </label>
+          <label class="option">
+            <input type="radio" name="q8" value="b">
+            B. 想试试完全不同的活法
+          </label>
+          <label class="option">
+            <input type="radio" name="q8" value="c">
+            C. 还是会做类似的选择
+          </label>
+          <label class="option">
+            <input type="radio" name="q8" value="d">
+            D. 更早开始做想做的事
+          </label>
+        </div>
+      </div>
+      
       <button type="button" class="result-btn" onclick="showResult()">🎮 查看我的作弊码</button>
     </form>
     
@@ -327,7 +419,7 @@
         answered++;
       }
       
-      if (answered < 4) {
+      if (answered < 8) {
         alert('请先回答所有问题哦～');
         return;
       }
@@ -342,13 +434,13 @@
         }
       }
       
-      // Check if all answers are evenly distributed
+      // Check if all answers are evenly distributed (2 each for 8 questions)
       const values = Object.values(answers);
       const isEven = values.every(v => v === values[0]);
       
       let result;
       
-      if (isEven && answers.a === 1 && answers.b === 1 && answers.c === 1 && answers.d === 1) {
+      if (isEven && answers.a === 2 && answers.b === 2 && answers.c === 2 && answers.d === 2) {
         result = {
           title: '🌟 全能系外挂',
           desc: '你的作弊码是"随机应变"。没有固定模式，但什么都能应付。这种人最可怕，因为你无法被预测。',
