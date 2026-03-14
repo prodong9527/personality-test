@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测测你的"人生作弊码"是什么🎮</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid #667eea;
+    }
+    
+    .header h1 {
+      color: #667eea;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    .tag {
+      display: inline-block;
+      background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    
+    .question {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 15px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .question h3 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .option {
+      padding: 15px 20px;
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 15px;
+    }
+    
+    .option:hover {
+      border-color: #667eea;
+      background: #f0f4ff;
+    }
+    
+    .option.selected {
+      border-color: #667eea;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .option input {
+      display: none;
+    }
+    
+    .result-btn {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 15px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: transform 0.3s;
+    }
+    
+    .result-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+    
+    .result {
+      display: none;
+      margin-top: 30px;
+      padding: 25px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      border-radius: 15px;
+      animation: slideIn 0.5s ease;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .result h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .result p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    
+    .result .warning {
+      background: rgba(255,255,255,0.2);
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid #e0e0e0;
+      color: #999;
+      font-size: 14px;
+    }
+    
+    .share-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    
+    .share-btn:hover {
+      background: #128C7E;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎮 测测你的"人生作弊码"</h1>
+      <p>是什么让你与众不同</p>
+      <span class="tag">不准你打我（超准版）</span>
+    </div>
+    
+    <form id="quizForm">
+      <!-- Question 1 -->
+      <div class="question">
+        <h3>Q1. 深夜 2 点，你突然醒了，第一反应是？</h3>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q1" value="a">
+            A. 刷手机，时间不知不觉就没了
+          </label>
+          <label class="option">
+            <input type="radio" name="q1" value="b">
+            B. 思考人生，越想越清醒
+          </label>
+          <label class="option">
+            <input type="radio" name="q1" value="c">
+            C. 庆幸还能睡 4 小时，秒睡
+          </label>
+          <label class="option">
+            <input type="radio" name="q1" value="d">
+            D. 起来吃点东西，胃醒了人也醒了
+          </label>
+        </div>
+      </div>
+      
+      <!-- Question 2 -->
+      <div class="question">
+        <h3>Q2. 朋友说"我有个秘密告诉你"，你内心 OS 是？</h3>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q2" value="a">
+            A. 又来，上次说的秘密已经忘了
+          </label>
+          <label class="option">
+            <input type="radio" name="q2" value="b">
+            B. 什么秘密？我准备好了
+          </label>
+          <label class="option">
+            <input type="radio" name="q2" value="c">
+            C. 希望不是借钱/分手/要孩子
+          </label>
+          <label class="option">
+            <input type="radio" name="q2" value="d">
+            D. 先判断值不值得听
+          </label>
+        </div>
+      </div>
+      
+      <!-- Question 3 -->
+      <div class="question">
+        <h3>Q3. 看到"限时 5 分钟"的促销，你会？</h3>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q3" value="a">
+            A. 直接关掉，我不被套路
+          </label>
+          <label class="option">
+            <input type="radio" name="q3" value="b">
+            B. 打开看看，不买但了解一下
+          </label>
+          <label class="option">
+            <input type="radio" name="q3" value="c">
+            C. 如果真需要就买，不纠结
+          </label>
+          <label class="option">
+            <input type="radio" name="q3" value="d">
+            D. 已经下单了，手比脑子快
+          </label>
+        </div>
+      </div>
+      
+      <!-- Question 4 -->
+      <div class="question">
+        <h3>Q4. 如果明天能拥有一种超能力，选？</h3>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q4" value="a">
+            A. 读心术（知道别人怎么想你）
+          </label>
+          <label class="option">
+            <input type="radio" name="q4" value="b">
+            B. 时间暂停（想多睡就多睡）
+          </label>
+          <label class="option">
+            <input type="radio" name="q4" value="c">
+            C. 隐身术（想消失就消失）
+          </label>
+          <label class="option">
+            <input type="radio" name="q4" value="d">
+            D. 预知未来（至少知道彩票号码）
+          </label>
+        </div>
+      </div>
+      
+      <button type="button" class="result-btn" onclick="showResult()">🎮 查看我的作弊码</button>
+    </form>
+    
+    <div id="result" class="result">
+      <h2 id="resultTitle"></h2>
+      <p id="resultDesc"></p>
+      <p id="resultMotto"></p>
+      <div class="warning" id="resultWarning"></div>
+      <button class="share-btn" onclick="shareResult()">📱 分享到朋友圈</button>
+    </div>
+    
+    <div class="footer">
+      <p>🎴 每日小测酱 | 每天 1 个趣味心理测试</p>
+      <p>不准你打我（超准版）</p>
+    </div>
+  </div>
+  
+  <script>
+    // Option selection styling
+    document.querySelectorAll('.option').forEach(option => {
+      option.addEventListener('click', function() {
+        // Remove selected class from siblings
+        this.parentElement.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        // Add selected class to clicked option
+        this.classList.add('selected');
+      });
+    });
+    
+    function showResult() {
+      const form = document.getElementById('quizForm');
+      const formData = new FormData(form);
+      
+      let answers = { a: 0, b: 0, c: 0, d: 0 };
+      let answered = 0;
+      
+      for (let [key, value] of formData.entries()) {
+        answers[value]++;
+        answered++;
+      }
+      
+      if (answered < 4) {
+        alert('请先回答所有问题哦～');
+        return;
+      }
+      
+      // Find most selected answer
+      let maxCount = 0;
+      let resultType = '';
+      for (let [key, count] of Object.entries(answers)) {
+        if (count > maxCount) {
+          maxCount = count;
+          resultType = key;
+        }
+      }
+      
+      // Check if all answers are evenly distributed
+      const values = Object.values(answers);
+      const isEven = values.every(v => v === values[0]);
+      
+      let result;
+      
+      if (isEven && answers.a === 1 && answers.b === 1 && answers.c === 1 && answers.d === 1) {
+        result = {
+          title: '🌟 全能系外挂',
+          desc: '你的作弊码是"随机应变"。没有固定模式，但什么都能应付。这种人最可怕，因为你无法被预测。',
+          motto: '✨ 隐藏技能：你是来体验游戏的，不是来通关的',
+          warning: ''
+        };
+      } else {
+        const results = {
+          a: {
+            title: '⏰ 拖延系外挂',
+            desc: '你的作弊码是"最后期限爆发力"。平时看着懒散，一到 deadline 直接开挂，效率吊打别人。人生信条：能拖到明天，绝不做在今天。',
+            motto: '🎯 人生信条：能拖到明天，绝不做在今天',
+            warning: '⚠️ 风险：心脏承受能力越来越强'
+          },
+          b: {
+            title: '🧠 好奇系外挂',
+            desc: '你的作弊码是"信息吸收力"。对什么都感兴趣，学东西快，人脉广，因为你知道的杂学最多。人生信条：知道得越多，活得越明白。',
+            motto: '🎯 人生信条：知道得越多，活得越明白',
+            warning: '⚠️ 风险：容易分心，专注力是短板'
+          },
+          c: {
+            title: '🎯 直觉系外挂',
+            desc: '你的作弊码是"精准判断力"。不纠结、不内耗，直觉准到离谱。别人分析半小时，你 3 秒给答案，还他妈挺准。人生信条：想多了累，做了再说。',
+            motto: '🎯 人生信条：想多了累，做了再说',
+            warning: '⚠️ 风险：偶尔会错过深度思考的机会'
+          },
+          d: {
+            title: '🚀 行动系外挂',
+            desc: '你的作弊码是"执行力碾压"。想到就做，不给自己反悔的机会。别人还在规划，你已经干完了。人生信条：完成比完美重要。',
+            motto: '🎯 人生信条：完成比完美重要',
+            warning: '⚠️ 风险：容易冲动，需要学会慢一点'
+          }
+        };
+        result = results[resultType];
+      }
+      
+      document.getElementById('resultTitle').textContent = result.title;
+      document.getElementById('resultDesc').textContent = result.desc;
+      document.getElementById('resultMotto').textContent = result.motto;
+      document.getElementById('resultWarning').textContent = result.warning;
+      
+      const resultDiv = document.getElementById('result');
+      resultDiv.style.display = 'block';
+      resultDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    function shareResult() {
+      const title = document.getElementById('resultTitle').textContent;
+      const text = `我刚测了我的"人生作弊码"，结果是：${title}！你也来测测看👉 ` + window.location.href;
+      
+      if (navigator.share) {
+        navigator.share({
+          title: '测测你的"人生作弊码"',
+          text: text,
+          url: window.location.href
+        });
+      } else {
+        // Fallback: copy to clipboard
+        navigator.clipboard.writeText(text).then(() => {
+          alert('分享链接已复制到剪贴板！');
+        });
+      }
+    }
+  </script>
+</body>
+</html>
